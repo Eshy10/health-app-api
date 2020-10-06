@@ -1,0 +1,2 @@
+class MeasureCategory < ApplicationRecord
+end
