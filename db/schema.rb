@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_123707) do
+ActiveRecord::Schema.define(version: 2020_10_06_125753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,4 +21,14 @@ ActiveRecord::Schema.define(version: 2020_10_06_123707) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "measurements", force: :cascade do |t|
+    t.decimal "value"
+    t.datetime "date"
+    t.bigint "measure_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["measure_category_id"], name: "index_measurements_on_measure_category_id"
+  end
+
+  add_foreign_key "measurements", "measure_categories"
 end
