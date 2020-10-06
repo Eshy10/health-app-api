@@ -3,12 +3,12 @@ class Api::V1::MeasureCategoriesController < ApplicationController
 
     def index
       @measure_categories = MeasureCategory.all
-      json_response( @measure_category)
+      json_response( @measure_categories)
     end
   
     def create
      @measure_category = MeasureCategory.create!(measure_category_params)
-      json_response( @measure_category :created)
+      json_response( @measure_category, :created)
     end
   
     def show
