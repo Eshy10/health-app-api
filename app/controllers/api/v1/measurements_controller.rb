@@ -7,7 +7,7 @@ class Api::V1::MeasurementsController < ApplicationController
     end
   
     def create
-     @measurement = Measurement.create!(measurement_params)
+     @measurement = current_user.measurements.create!(measurement_params)
       json_response( @measurement, :created)
     end
   
