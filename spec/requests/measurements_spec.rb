@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Measurements API' do
+  let(:user) { create(:user) }
   let!(:measure_category) { create(:MeasureCategory) }
   let!(:measurements) { create_list(:Measurement, 20, measure_category_id: measure_category.id) }
   let(:measure_category_id) { measure_category.id }
