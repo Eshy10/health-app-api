@@ -2,5 +2,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :measurements
-  validates_presence_of :name, :email, :password_digest
+  validates :name, presence: true
+  validates :name, length: { minimum: 4 }
+  validates :email, presence: true
+
 end
