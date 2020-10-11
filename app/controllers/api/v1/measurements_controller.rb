@@ -2,7 +2,7 @@ class Api::V1::MeasurementsController < ApplicationController
     before_action :set_measurement, only: [:show]
 
     def index
-      @measurements = Measurement.all
+      @measurements = current_user.measurements.order('date DESC')
       json_response( @measurements)
     end
   
