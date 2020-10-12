@@ -1,24 +1,129 @@
-# README
+# Health Tracker Api
+ >Health Tracker api RESTful API that allows authenticated users to measure their weight, cholestrol and also track the measurements.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ ## Signup User
+```
+  axios.post("https://nameless-temple-95690.herokuapp.com/signup", {
+      name: 'Eshy Shola',
+      email: shola@gmail.com,
+      password: 12345,
+      password_confirmation: 12345,
+    })
+  .then(response => console.log(response))
+  .catch(error => console.log(error))
+```
+ ## Login User
+```
+  axios.post("https://nameless-temple-95690.herokuapp.com/auth/login",
+    {
+      email: eshy@gmail.com,
+      password: 12345,
+    }
+  )
+  .then(response => console.log(response))
+  .catch(error => console.log(error))
+```
 
-Things you may want to cover:
+ ## Create Measurements
+```
+  const token = localStorage.getItem('token')
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+        
+    const measurements = {
+      value: measure.value,
+      date: measure.date,
+      measure_category_id: measure.measure_category_id
+    };
 
-* Ruby version
+  axios.post("https://nameless-temple-95690.herokuapp.com/api/v1/measurements", measurements, config)
+  .then(response => console.log(response))
+  .catch(error => console.log(error))
+```
 
-* System dependencies
+## Get All Measurements
+```
+  const token = localStorage.getItem('token')
+  axios.get("https://nameless-temple-95690.herokuapp.com/api/v1/measurements",
+    {
+    headers: {
+      Authorization: `Bearer ${token}`,
+     },
+  )
+  .then(response => console.log(response))
+  .catch(error => console.log(error))
+```
 
-* Configuration
+## To Create More Measure Categories
+```
+Run rails console in your terminal and do the following command:
+MeasureCategory.create(name: "Blood Pressure")
+```
 
-* Database creation
+## Built With
 
-* Database initialization
+- Ruby v2.7.0
+- Ruby on Rails v5.2.4
+## Getting Started
 
-* How to run the test suite
+To get a local copy up and running follow these simple example steps.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Prerequisites
 
-* Deployment instructions
+- Ruby: 2.6.3
+- Rails: 5.2.4
+- Postgres: >=9.5
 
-* ...
+### Setup
+
+Instal gems with:
+
+```
+bundle install
+```
+
+Setup database with:
+
+```
+   rails db:create
+   rails db:migrate
+```
+
+
+
+### Usage
+
+Start server with:
+
+```
+    rails server
+```
+
+
+### Run tests
+
+```
+    rspec --format documentation
+```
+
+##  Unit Test
+
+- Rspec
+
+
+## Author
+
+👤 Adewale Adeshola
+
+- Github: [@Eshy10](https://github.com/Eshy10)
+- Twitter: [@AdesholaAdewal6](https://twitter.com/AdesholaAdewal6?s=09)
+- Linkedin: [@adewale-adeshola](https://www.linkedin.com/in/adewale-adeshola)
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to <a href="https://microverse.org/">Microverse</a>
