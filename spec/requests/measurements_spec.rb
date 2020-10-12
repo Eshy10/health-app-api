@@ -9,7 +9,7 @@ RSpec.describe 'Measurements API' do
   let(:headers) { valid_headers }
 
   describe 'GET Measurements' do
-    before { get "/api/v1/measurements", headers: headers }
+    before { get '/api/v1/measurements', headers: headers }
 
     context 'when category exists' do
       it 'returns status code 200' do
@@ -21,7 +21,6 @@ RSpec.describe 'Measurements API' do
       end
     end
   end
-
 
   describe 'GET /api/v1/measurements/:id' do
     before { get "/api/v1/measurements/#{id}", headers: headers }
@@ -49,21 +48,20 @@ RSpec.describe 'Measurements API' do
     end
   end
 
-
   describe 'POST Measurements' do
     let(:valid_attributes) { { value: 41.5, date: '6-10-2020', measure_category_id: 1 } }
 
     context 'when an invalid request' do
-      before { post "/api/v1/measurements", params: {}, headers: headers }
+      before { post '/api/v1/measurements', params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a failure message' do
-        expect(response.body).to match(/Validation failed: Measure category must exist, Value can't be blank, Date can't be blank/)
+        expect(response.body)
+          .to match(/Validation failed: Measure category must exist, Value can't be blank, Date can't be blank/)
       end
     end
   end
-
 end
