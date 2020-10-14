@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
-  root 'homepage#index'
+  root 'api/v1/measure_categories#index'
 end
